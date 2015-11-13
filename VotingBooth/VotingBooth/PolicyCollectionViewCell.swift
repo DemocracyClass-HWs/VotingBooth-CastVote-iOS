@@ -19,7 +19,6 @@ class PolicyCollectionViewCell: UICollectionViewCell {
         title = UILabel()
         content = UITextView()
         super.init(frame: frame)
-//        self.backgroundColor = UIColor(red: 189/255, green: 182/255, blue: 156/255, alpha: 1)
         self.backgroundColor = UIColor(red: 255/255, green: 184/255, blue: 95/255, alpha: 1)
         
         title.text = "Whatever Policy #1"
@@ -49,9 +48,9 @@ class PolicyCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 10
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 0.7).CGColor
-        self.layer.shadowRadius = 10
+        self.layer.shadowRadius = 5
         self.layer.shadowColor = UIColor.lightGrayColor().CGColor
-        self.layer.shadowOpacity = 0.8
+        self.layer.shadowOpacity = 1
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
     

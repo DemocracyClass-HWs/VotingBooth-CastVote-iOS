@@ -10,6 +10,7 @@
 		CDDFE5545F7BC6F8CFF1CD54 /* Pods_VotingBooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6376B9D16592A43B353593 /* Pods_VotingBooth.framework */; };
 		F36A20721BF669DC00C55130 /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A20711BF669DC00C55130 /* LoadingPage.swift */; };
 		F36A20741BF6830200C55130 /* CandidateVotingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A20731BF6830200C55130 /* CandidateVotingPage.swift */; };
+		F36A20761BF699D600C55130 /* CandidateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A20751BF699D600C55130 /* CandidateCollectionViewCell.swift */; };
 		F3FE82121BF566B000518CDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82111BF566B000518CDD /* AppDelegate.swift */; };
 		F3FE82141BF566B000518CDD /* PolicyVotingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82131BF566B000518CDD /* PolicyVotingPage.swift */; };
 		F3FE82171BF566B000518CDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3FE82151BF566B000518CDD /* Main.storyboard */; };
@@ -27,6 +28,8 @@
 		DCAFD555DB07B1C4630FF77A /* Pods-VotingBooth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VotingBooth.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VotingBooth/Pods-VotingBooth.debug.xcconfig"; sourceTree = "<group>"; };
 		F36A20711BF669DC00C55130 /* LoadingPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		F36A20731BF6830200C55130 /* CandidateVotingPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateVotingPage.swift; sourceTree = "<group>"; };
+		F36A20751BF699D600C55130 /* CandidateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCollectionViewCell.swift; sourceTree = "<group>"; };
+		F36A20771BF6A15800C55130 /* VotingBooth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VotingBooth-Bridging-Header.h"; sourceTree = "<group>"; };
 		F3FE820E1BF566B000518CDD /* VotingBooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VotingBooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FE82111BF566B000518CDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3FE82131BF566B000518CDD /* PolicyVotingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyVotingPage.swift; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 				F3FE82181BF566B000518CDD /* VotingBooth.xcdatamodeld */,
 				F3FE82291BF580A800518CDD /* Global.swift */,
 				F3FE822B1BF5851B00518CDD /* MainNavigationController.swift */,
+				F36A20771BF6A15800C55130 /* VotingBooth-Bridging-Header.h */,
 			);
 			path = VotingBooth;
 			sourceTree = "<group>";
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				F3FE82271BF57C9A00518CDD /* PolicyCollectionViewCell.swift */,
+				F36A20751BF699D600C55130 /* CandidateCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F36A20761BF699D600C55130 /* CandidateCollectionViewCell.swift in Sources */,
 				F3FE822F1BF5859500518CDD /* DataModel.swift in Sources */,
 				F3FE822C1BF5851B00518CDD /* MainNavigationController.swift in Sources */,
 				F3FE82281BF57C9A00518CDD /* PolicyCollectionViewCell.swift in Sources */,
@@ -377,10 +383,13 @@
 			baseConfigurationReference = DCAFD555DB07B1C4630FF77A /* Pods-VotingBooth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = VotingBooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Peyman.VotingBooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VotingBooth/VotingBooth-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -389,10 +398,12 @@
 			baseConfigurationReference = 9A231A3F1FE9FC40D58C8A2A /* Pods-VotingBooth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = VotingBooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Peyman.VotingBooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VotingBooth/VotingBooth-Bridging-Header.h";
 			};
 			name = Release;
 		};

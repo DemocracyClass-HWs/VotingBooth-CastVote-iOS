@@ -15,10 +15,8 @@ class PolicyVotingPage: UIViewController, UICollectionViewDataSource, UICollecti
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
+
         self.view.backgroundColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func prefersStatusBarHidden() -> Bool {
