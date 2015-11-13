@@ -12,3 +12,5 @@ import SIOSocket
 var socket: SIOSocket?
 
 var data: DataModel?
+
+var titleFont = UIFont(name: "Avenir-Light", size: 30)

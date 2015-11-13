@@ -7,23 +7,16 @@
 //
 
 import UIKit
-import SIOSocket
-import JSONHelper
 
 class MainNavigationController: UINavigationController {
     
     override func viewDidLoad() {
-        SIOSocket.socketWithHost("https://cudde.herokuapp.com/", response: { (sk) -> Void in
-            socket = sk
-            socket?.on("welcome", callback: { (msg) -> Void in
-                let jsonString = msg[0] as! String
-                data <-- jsonString
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.pushViewController(ViewController(), animated: true)
-                }
-                
-            })
-        })
+        self.setNavigationBarHidden(true, animated: false)
+        self.setViewControllers([LoadingPage()], animated: false)
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
 }

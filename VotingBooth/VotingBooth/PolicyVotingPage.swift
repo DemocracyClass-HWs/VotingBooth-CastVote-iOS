@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController, UICollectionViewDataSource {
+class PolicyVotingPage: UIViewController, UICollectionViewDataSource {
     
     
 
@@ -17,33 +17,42 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = UIColor.whiteColor()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     override func viewWillAppear(animated: Bool) {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: (self.view.bounds.width/2)-100, height: (self.view.bounds.height/2)-100)
-        flowLayout.sectionInset = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
+        flowLayout.itemSize = CGSize(width: (self.view.bounds.width/2)-80, height: (self.view.bounds.height/2)-150)
+        flowLayout.sectionInset = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
+        flowLayout.minimumLineSpacing = 60
         
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
         collectionView.registerClass(PolicyCollectionViewCell.self, forCellWithReuseIdentifier: "PolicyCell")
         collectionView.dataSource = self
         
-        collectionView.backgroundColor = UIColor.redColor()
+        collectionView.backgroundColor = UIColor.clearColor()
         
         self.view.addSubview(collectionView)
         
         collectionView.snp_makeConstraints { (make) -> Void in
-            make.left.top.bottom.right.equalTo(self.view)
+            make.left.top.bottom.right.equalTo(self.view).inset(25)
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier("PolicyCell", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PolicyCell", forIndexPath: indexPath)
+        let policyCell = cell as? PolicyCollectionViewCell
+        if(policyCell == nil){
+            return cell
+        } else {
+            policyCell?.title.text = data?.policies[indexPath.row].content
+            return policyCell!
+        }
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
