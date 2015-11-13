@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let flowLayout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = UIColor.redColor()
+        self.view.addSubview(collectionView)
+        collectionView.snp_makeConstraints { (make) -> Void in
+            make.left.top.bottom.right.equalTo(self.view)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,4 +30,3 @@ class ViewController: UIViewController {
 
 
 }
-

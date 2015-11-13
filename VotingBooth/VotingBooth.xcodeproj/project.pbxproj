@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CDDFE5545F7BC6F8CFF1CD54 /* Pods_VotingBooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6376B9D16592A43B353593 /* Pods_VotingBooth.framework */; };
 		F3FE82121BF566B000518CDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82111BF566B000518CDD /* AppDelegate.swift */; };
 		F3FE82141BF566B000518CDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82131BF566B000518CDD /* ViewController.swift */; };
 		F3FE82171BF566B000518CDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3FE82151BF566B000518CDD /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A231A3F1FE9FC40D58C8A2A /* Pods-VotingBooth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VotingBooth.release.xcconfig"; path = "Pods/Target Support Files/Pods-VotingBooth/Pods-VotingBooth.release.xcconfig"; sourceTree = "<group>"; };
+		DCAFD555DB07B1C4630FF77A /* Pods-VotingBooth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VotingBooth.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VotingBooth/Pods-VotingBooth.debug.xcconfig"; sourceTree = "<group>"; };
 		F3FE820E1BF566B000518CDD /* VotingBooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VotingBooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FE82111BF566B000518CDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3FE82131BF566B000518CDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		F3FE821B1BF566B000518CDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3FE821E1BF566B000518CDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3FE82201BF566B000518CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE6376B9D16592A43B353593 /* Pods_VotingBooth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VotingBooth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDDFE5545F7BC6F8CFF1CD54 /* Pods_VotingBooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1228C0BB2AABE439D117677E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE6376B9D16592A43B353593 /* Pods_VotingBooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5920ACC8B96F443FD183D440 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DCAFD555DB07B1C4630FF77A /* Pods-VotingBooth.debug.xcconfig */,
+				9A231A3F1FE9FC40D58C8A2A /* Pods-VotingBooth.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F3FE82051BF566B000518CDD = {
 			isa = PBXGroup;
 			children = (
 				F3FE82101BF566B000518CDD /* VotingBooth */,
 				F3FE820F1BF566B000518CDD /* Products */,
+				5920ACC8B96F443FD183D440 /* Pods */,
+				1228C0BB2AABE439D117677E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3FE82231BF566B000518CDD /* Build configuration list for PBXNativeTarget "VotingBooth" */;
 			buildPhases = (
+				E0E571030639E5070EF9E734 /* Check Pods Manifest.lock */,
 				F3FE820A1BF566B000518CDD /* Sources */,
 				F3FE820B1BF566B000518CDD /* Frameworks */,
 				F3FE820C1BF566B000518CDD /* Resources */,
+				9DA49FE014813CCF50B0BF77 /* Embed Pods Frameworks */,
+				899A498991CE927DD03D0462 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		899A498991CE927DD03D0462 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VotingBooth/Pods-VotingBooth-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9DA49FE014813CCF50B0BF77 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VotingBooth/Pods-VotingBooth-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0E571030639E5070EF9E734 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3FE820A1BF566B000518CDD /* Sources */ = {
@@ -251,6 +326,7 @@
 		};
 		F3FE82241BF566B000518CDD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCAFD555DB07B1C4630FF77A /* Pods-VotingBooth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VotingBooth/Info.plist;
@@ -262,6 +338,7 @@
 		};
 		F3FE82251BF566B000518CDD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A231A3F1FE9FC40D58C8A2A /* Pods-VotingBooth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VotingBooth/Info.plist;
@@ -290,6 +367,7 @@
 				F3FE82251BF566B000518CDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
