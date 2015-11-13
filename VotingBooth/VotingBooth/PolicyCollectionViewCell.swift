@@ -19,7 +19,8 @@ class PolicyCollectionViewCell: UICollectionViewCell {
         title = UILabel()
         content = UITextView()
         super.init(frame: frame)
-        self.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+//        self.backgroundColor = UIColor(red: 189/255, green: 182/255, blue: 156/255, alpha: 1)
+        self.backgroundColor = UIColor(red: 255/255, green: 184/255, blue: 95/255, alpha: 1)
         
         title.text = "Whatever Policy #1"
         title.font = titleFont
@@ -30,6 +31,7 @@ class PolicyCollectionViewCell: UICollectionViewCell {
         content.textAlignment = .Justified
         content.editable = false
         content.scrollEnabled = false
+        content.userInteractionEnabled = false
         
         self.addSubview(title)
         self.addSubview(content)
@@ -46,7 +48,7 @@ class PolicyCollectionViewCell: UICollectionViewCell {
         
         self.layer.cornerRadius = 10
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).CGColor
+        self.layer.borderColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 0.7).CGColor
         self.layer.shadowRadius = 10
         self.layer.shadowColor = UIColor.lightGrayColor().CGColor
         self.layer.shadowOpacity = 0.8
