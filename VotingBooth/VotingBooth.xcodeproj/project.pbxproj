@@ -14,6 +14,10 @@
 		F3FE821A1BF566B000518CDD /* VotingBooth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82181BF566B000518CDD /* VotingBooth.xcdatamodeld */; };
 		F3FE821C1BF566B000518CDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FE821B1BF566B000518CDD /* Assets.xcassets */; };
 		F3FE821F1BF566B000518CDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3FE821D1BF566B000518CDD /* LaunchScreen.storyboard */; };
+		F3FE82281BF57C9A00518CDD /* PolicyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82271BF57C9A00518CDD /* PolicyCollectionViewCell.swift */; };
+		F3FE822A1BF580A800518CDD /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82291BF580A800518CDD /* Global.swift */; };
+		F3FE822C1BF5851B00518CDD /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE822B1BF5851B00518CDD /* MainNavigationController.swift */; };
+		F3FE822F1BF5859500518CDD /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE822E1BF5859500518CDD /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		F3FE821B1BF566B000518CDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3FE821E1BF566B000518CDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3FE82201BF566B000518CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3FE82271BF57C9A00518CDD /* PolicyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolicyCollectionViewCell.swift; sourceTree = "<group>"; };
+		F3FE82291BF580A800518CDD /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		F3FE822B1BF5851B00518CDD /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		F3FE822E1BF5859500518CDD /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		FE6376B9D16592A43B353593 /* Pods_VotingBooth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VotingBooth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -80,6 +88,8 @@
 		F3FE82101BF566B000518CDD /* VotingBooth */ = {
 			isa = PBXGroup;
 			children = (
+				F3FE822D1BF5856E00518CDD /* Models */,
+				F3FE82261BF57B3E00518CDD /* Views */,
 				F3FE82111BF566B000518CDD /* AppDelegate.swift */,
 				F3FE82131BF566B000518CDD /* ViewController.swift */,
 				F3FE82151BF566B000518CDD /* Main.storyboard */,
@@ -87,8 +97,26 @@
 				F3FE821D1BF566B000518CDD /* LaunchScreen.storyboard */,
 				F3FE82201BF566B000518CDD /* Info.plist */,
 				F3FE82181BF566B000518CDD /* VotingBooth.xcdatamodeld */,
+				F3FE82291BF580A800518CDD /* Global.swift */,
+				F3FE822B1BF5851B00518CDD /* MainNavigationController.swift */,
 			);
 			path = VotingBooth;
+			sourceTree = "<group>";
+		};
+		F3FE82261BF57B3E00518CDD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F3FE82271BF57C9A00518CDD /* PolicyCollectionViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		F3FE822D1BF5856E00518CDD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F3FE822E1BF5859500518CDD /* DataModel.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,8 +241,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3FE822F1BF5859500518CDD /* DataModel.swift in Sources */,
+				F3FE822C1BF5851B00518CDD /* MainNavigationController.swift in Sources */,
+				F3FE82281BF57C9A00518CDD /* PolicyCollectionViewCell.swift in Sources */,
 				F3FE82141BF566B000518CDD /* ViewController.swift in Sources */,
 				F3FE82121BF566B000518CDD /* AppDelegate.swift in Sources */,
+				F3FE822A1BF580A800518CDD /* Global.swift in Sources */,
 				F3FE821A1BF566B000518CDD /* VotingBooth.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
