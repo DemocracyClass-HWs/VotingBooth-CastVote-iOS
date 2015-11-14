@@ -17,6 +17,19 @@ class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        // Title 
+        let title = UILabel()
+        title.text = "Who would you get a beer with?"
+        title.textAlignment = .Center
+        title.font = titleFont?.fontWithSize(35)
+        self.view.addSubview(title)
+        title.snp_makeConstraints { (make) -> Void in
+            make.left.right.equalTo(self.view)
+            make.top.equalTo(self.view).offset(60)
+            make.height.equalTo(40)
+        }
+        
         // Finish button
         let finishButton = UIButton()
         finishButton.setAttributedTitle(NSAttributedString(string: "FINISH", attributes: [NSFontAttributeName:titleFont!.fontWithSize(28), NSForegroundColorAttributeName:UIColor.whiteColor()]), forState: .Normal)
@@ -46,7 +59,7 @@ class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UIColle
         
         collectionView.snp_makeConstraints { (make) -> Void in
             make.left.right.equalTo(self.view).inset(25)
-            make.top.equalTo(self.view).inset(150)
+            make.top.equalTo(title.snp_bottom).offset(45)
             make.bottom.equalTo(finishButton.snp_top)
         }
     }
@@ -80,7 +93,9 @@ class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UIColle
         shadowWidthAnimation.repeatCount = .infinity
         shadowWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         cell?.layer.addAnimation(shadowWidthAnimation, forKey: "shadowRadius")
-        selectedPolicy = data?.policies[indexPath.row]
+        
+        print(indexPath.section*4 + indexPath.row)
+        selectedCandidate = data?.candidates[indexPath.section*4 + indexPath.row]
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
@@ -114,7 +129,7 @@ class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func finish_tapped() {
-        
+        self.navigationController?.pushViewController(ThankYouPage(), animated: true)
     }
 
 }
