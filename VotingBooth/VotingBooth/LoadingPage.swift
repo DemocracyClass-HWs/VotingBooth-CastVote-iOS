@@ -40,7 +40,7 @@ class LoadingPage: UIViewController {
                 let jsonString = msg[0] as! String
                 data <-- jsonString
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.navigationController?.pushViewController(PolicyVotingPage(), animated: true)
+                    self.navigationController?.pushViewController(WelcomePage(), animated: true)
                 }
                 
             })

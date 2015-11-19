@@ -13,7 +13,7 @@ var socket: SIOSocket?
 
 var data: DataModel?
 
-var titleFont = UIFont(name: "Avenir-Light", size: 30)
+var titleFont = UIFont(name: "Superclarendon-BoldItalic", size: 30)
 var headerFont = UIFont(name: "Avenir", size: 60)
 
 var selectedPolicy : Policy?
