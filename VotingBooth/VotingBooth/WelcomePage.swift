@@ -22,10 +22,15 @@ class WelcomePage: PageViewController {
         self.view.addSubview(beginButton)
         
         beginButton.snp_makeConstraints { (make) -> Void in
-            make.width.equalTo(200)
-            make.height.equalTo(50)
+            if let requiredSize = beginButton.attributedTitleForState(.Normal)?.size() {
+                make.width.equalTo(requiredSize.width)
+                make.height.equalTo(requiredSize.height)
+            } else {
+                make.width.equalTo(self.view)
+                make.height.equalTo(50)
+            }
             make.centerX.equalTo(self.view.snp_centerX)
-            make.centerY.equalTo(self.view.snp_centerY).offset(150)
+            make.centerY.equalTo(self.view.snp_centerY).offset(300)
         }
         
         beginButton.addTarget(self, action: "begin_tapped", forControlEvents: .TouchUpInside)
@@ -33,7 +38,7 @@ class WelcomePage: PageViewController {
     }
     
     func begin_tapped() {
-        
+        self.navigationController?.pushViewController(PolicyVotingPage(), animated: true)
     }
 
 }
