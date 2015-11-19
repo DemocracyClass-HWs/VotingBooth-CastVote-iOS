@@ -17,7 +17,7 @@ class WelcomePage: PageViewController {
         
         // begin button
         let beginButton = UIButton()
-        beginButton.setAttributedTitle(NSAttributedString(string: "BEGIN", attributes: [NSFontAttributeName: titleFont!.fontWithSize(40), NSForegroundColorAttributeName: UIColor.redColor()]), forState: .Normal)
+        beginButton.setAttributedTitle(NSAttributedString(string: "BEGIN", attributes: [NSFontAttributeName: largeTitleFont!.fontWithSize(40), NSForegroundColorAttributeName: UIColor.redColor()]), forState: .Normal)
         
         self.view.addSubview(beginButton)
         
