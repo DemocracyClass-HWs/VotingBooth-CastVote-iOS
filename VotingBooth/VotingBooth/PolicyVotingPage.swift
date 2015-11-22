@@ -88,6 +88,7 @@ class PolicyVotingPage: PageViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         nextButton.backgroundColor = textColor
         nextButton.enabled = true
+        selectedPolicy = data?.policies[indexPath.row]
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

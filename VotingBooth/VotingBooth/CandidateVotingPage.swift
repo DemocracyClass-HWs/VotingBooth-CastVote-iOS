@@ -16,12 +16,12 @@ class CandidateVotingPage: PageViewController, UICollectionViewDataSource, UICol
     override func viewWillAppear(animated: Bool) {
         
         // Next Button
-        nextButton.setAttributedTitle(NSAttributedString(string: "Next", attributes: [NSFontAttributeName:titleFont!.fontWithSize(35), NSForegroundColorAttributeName:UIColor.whiteColor()]), forState: .Normal)
+        nextButton.setAttributedTitle(NSAttributedString(string: "Finish", attributes: [NSFontAttributeName:titleFont!.fontWithSize(35), NSForegroundColorAttributeName:UIColor.whiteColor()]), forState: .Normal)
         nextButton.layer.borderWidth = 1
         nextButton.layer.borderColor = UIColor.whiteColor().CGColor
         nextButton.backgroundColor = UIColor(white: 200/255, alpha: 1)
         nextButton.enabled = false
-        nextButton.addTarget(self, action: "next_tapped", forControlEvents: .TouchUpInside)
+        nextButton.addTarget(self, action: "finish_tapped", forControlEvents: .TouchUpInside)
         
         self.container.addSubview(nextButton)
         
@@ -55,9 +55,9 @@ class CandidateVotingPage: PageViewController, UICollectionViewDataSource, UICol
         
         // Collection view
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 170, height: 170)
+        flowLayout.itemSize = CGSize(width: 170, height: 190)
         flowLayout.sectionInset = UIEdgeInsets(top: 25, left: 100, bottom: 25, right: 100)
-        flowLayout.minimumLineSpacing = 50
+        flowLayout.minimumLineSpacing = 30
         
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
         collectionView.registerClass(CandidateCollectionViewCell.self, forCellWithReuseIdentifier: "CandidateCell")
@@ -85,10 +85,17 @@ class CandidateVotingPage: PageViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CandidateCollectionViewCell
         let animation = CABasicAnimation(keyPath: "shadowColor")
         animation.fromValue = cell?.layer.shadowColor
-        animation.toValue = UIColor(red: 70/255, green: 32/255, blue: 102/255, alpha: 1).CGColor
+        if let candidate = data?.candidates[indexPath.row] {
+            switch candidate.party {
+            case .Democratic: animation.toValue = textColor.CGColor
+            case .Republican: animation.toValue = UIColor.redColor().CGColor
+            case _:return
+            }
+        }
+        
         animation.duration = 0.5
         animation.autoreverses = true
         animation.repeatCount = .infinity
@@ -97,26 +104,29 @@ class CandidateVotingPage: PageViewController, UICollectionViewDataSource, UICol
         
         let shadowWidthAnimation = CABasicAnimation(keyPath: "shadowRadius")
         shadowWidthAnimation.fromValue = cell?.layer.shadowRadius
-        shadowWidthAnimation.toValue = (cell?.layer.shadowRadius)! * 2
+        shadowWidthAnimation.toValue = (cell?.layer.shadowRadius)! * 3
         shadowWidthAnimation.duration = 0.5
         shadowWidthAnimation.autoreverses = true
         shadowWidthAnimation.repeatCount = .infinity
         shadowWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         cell?.layer.addAnimation(shadowWidthAnimation, forKey: "shadowRadius")
         
-        print(indexPath.section*4 + indexPath.row)
-        selectedCandidate = data?.candidates[indexPath.section*4 + indexPath.row]
+        print(indexPath.row)
+        selectedCandidate = data?.candidates[indexPath.row]
+        nextButton.backgroundColor = textColor
+        nextButton.enabled = true
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CandidateCell", forIndexPath: indexPath)
-        let candidateCell = cell as? CandidateCollectionViewCell
-        if(candidateCell == nil) {
-            return cell
-        } else if let imageUrl = data?.candidates[indexPath.row].imageUrl {
-            let url = NSURL(string: imageUrl)
-            candidateCell!.imageViewer.sd_setImageWithURL(url)
-            return candidateCell!
+        if let candidateCell = cell as? CandidateCollectionViewCell, candidate = data?.candidates[indexPath.row] {
+            let url = NSURL(string: candidate.imageUrl)
+            candidateCell.imageViewer.sd_setImageWithURL(url)
+            switch candidate.party {
+            case .Democratic: candidateCell.frameView.backgroundColor = UIColor(red: 58/255, green: 82/255, blue: 124/255, alpha: 1)
+            case .Republican: candidateCell.frameView.backgroundColor = UIColor(red: 177/255, green: 68/255, blue: 73/255, alpha: 1)
+            case _: candidateCell.frameView.backgroundColor = UIColor.grayColor()
+            }
         }
         return cell
     }
