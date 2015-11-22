@@ -15,7 +15,7 @@ var data: DataModel?
 
 var titleFont = UIFont(name: "Superclarendon-Italic", size: 30)
 var largeTitleFont = UIFont(name: "Superclarendon-BoldItalic", size: 30)
-var headerFont = UIFont(name: "Avenir", size: 60)
+var headerFont = UIFont(name: "Superclarendon", size: 60)
 
 var textColor = UIColor(red: 15/255, green: 127/255, blue: 254/255, alpha: 1)
 var borderColor = UIColor(red: 158/255, green: 11/255, blue: 15/255, alpha: 1)
