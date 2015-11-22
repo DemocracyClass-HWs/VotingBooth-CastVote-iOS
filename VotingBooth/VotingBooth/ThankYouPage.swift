@@ -8,23 +8,23 @@
 
 import UIKit
 
-class ThankYouPage: UIViewController {
+class ThankYouPage: PageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
+        self.container.backgroundColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
         
         // Title
         let title = UILabel()
         title.text = "Thank you :)"
         title.textAlignment = .Center
         title.font = headerFont?.fontWithSize(55)
-        self.view.addSubview(title)
+        self.container.addSubview(title)
         title.snp_makeConstraints { (make) -> Void in
-            make.left.right.equalTo(self.view)
-            make.centerY.equalTo(self.view.snp_centerY).offset(-60)
-            make.height.equalTo(60)
+            make.left.right.equalTo(self.container)
+            make.centerY.equalTo(self.container.snp_centerY).offset(-60)
+            make.height.equalTo(70)
         }
         
         // Info
@@ -35,12 +35,12 @@ class ThankYouPage: UIViewController {
         info.textAlignment = .Center
         info.font = titleFont?.fontWithSize(25)
         info.backgroundColor = UIColor.clearColor()
-        self.view.addSubview(info)
+        self.container.addSubview(info)
         info.snp_makeConstraints { (make) -> Void in
-            make.width.equalTo(self.view).dividedBy(2).offset(10)
+            make.width.equalTo(self.container).dividedBy(2).offset(10)
             make.top.equalTo(title.snp_bottom).offset(20)
-            make.centerX.equalTo(self.view.snp_centerX)
-            make.height.greaterThanOrEqualTo(120)
+            make.centerX.equalTo(self.container.snp_centerX)
+            make.height.greaterThanOrEqualTo(200)
         }
         
         // Button
@@ -49,10 +49,10 @@ class ThankYouPage: UIViewController {
         button.backgroundColor = UIColor.orangeColor()
         button.addTarget(self, action: "finish_tapped", forControlEvents: .TouchUpInside)
         
-        self.view.addSubview(button)
+        self.container.addSubview(button)
         
         button.snp_makeConstraints { (make) -> Void in
-            make.left.right.bottom.equalTo(self.view)
+            make.left.right.bottom.equalTo(self.container)
             make.height.equalTo(60)
         }
         
@@ -69,13 +69,6 @@ class ThankYouPage: UIViewController {
             UIView.setAnimationTransition(.FlipFromLeft, forView: (self.navigationController?.view)!, cache: false)
         }
         self.navigationController?.popToViewController(secondNavigationController!, animated: false)
-        /*
-        [UIView animateWithDuration:0.75
-        animations:^{
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];
-        }];
-        [self.navigationController popViewControllerAnimated:NO];*/
     }
 
 }

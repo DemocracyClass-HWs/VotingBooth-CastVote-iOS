@@ -12,13 +12,15 @@
 		F36A20741BF6830200C55130 /* CandidateVotingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A20731BF6830200C55130 /* CandidateVotingPage.swift */; };
 		F36A20761BF699D600C55130 /* CandidateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A20751BF699D600C55130 /* CandidateCollectionViewCell.swift */; };
 		F36A207C1BF6C34300C55130 /* ThankYouPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A207B1BF6C34300C55130 /* ThankYouPage.swift */; };
+		F36AEE861BFD7B2C00038168 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36AEE851BFD7B2C00038168 /* PageViewController.swift */; };
+		F36AEE881BFD7BF000038168 /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36AEE871BFD7BF000038168 /* WelcomePage.swift */; };
+		F36AEE8A1BFD8DE100038168 /* PolicyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36AEE891BFD8DE100038168 /* PolicyTableViewCell.swift */; };
 		F3FE82121BF566B000518CDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82111BF566B000518CDD /* AppDelegate.swift */; };
 		F3FE82141BF566B000518CDD /* PolicyVotingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82131BF566B000518CDD /* PolicyVotingPage.swift */; };
 		F3FE82171BF566B000518CDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3FE82151BF566B000518CDD /* Main.storyboard */; };
 		F3FE821A1BF566B000518CDD /* VotingBooth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82181BF566B000518CDD /* VotingBooth.xcdatamodeld */; };
 		F3FE821C1BF566B000518CDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FE821B1BF566B000518CDD /* Assets.xcassets */; };
 		F3FE821F1BF566B000518CDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3FE821D1BF566B000518CDD /* LaunchScreen.storyboard */; };
-		F3FE82281BF57C9A00518CDD /* PolicyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82271BF57C9A00518CDD /* PolicyCollectionViewCell.swift */; };
 		F3FE822A1BF580A800518CDD /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE82291BF580A800518CDD /* Global.swift */; };
 		F3FE822C1BF5851B00518CDD /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE822B1BF5851B00518CDD /* MainNavigationController.swift */; };
 		F3FE822F1BF5859500518CDD /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE822E1BF5859500518CDD /* DataModel.swift */; };
@@ -32,6 +34,9 @@
 		F36A20751BF699D600C55130 /* CandidateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCollectionViewCell.swift; sourceTree = "<group>"; };
 		F36A20771BF6A15800C55130 /* VotingBooth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VotingBooth-Bridging-Header.h"; sourceTree = "<group>"; };
 		F36A207B1BF6C34300C55130 /* ThankYouPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThankYouPage.swift; sourceTree = "<group>"; };
+		F36AEE851BFD7B2C00038168 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		F36AEE871BFD7BF000038168 /* WelcomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePage.swift; sourceTree = "<group>"; };
+		F36AEE891BFD8DE100038168 /* PolicyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolicyTableViewCell.swift; sourceTree = "<group>"; };
 		F3FE820E1BF566B000518CDD /* VotingBooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VotingBooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FE82111BF566B000518CDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3FE82131BF566B000518CDD /* PolicyVotingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyVotingPage.swift; sourceTree = "<group>"; };
@@ -40,7 +45,6 @@
 		F3FE821B1BF566B000518CDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3FE821E1BF566B000518CDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3FE82201BF566B000518CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F3FE82271BF57C9A00518CDD /* PolicyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolicyCollectionViewCell.swift; sourceTree = "<group>"; };
 		F3FE82291BF580A800518CDD /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		F3FE822B1BF5851B00518CDD /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		F3FE822E1BF5859500518CDD /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 				F36A20711BF669DC00C55130 /* LoadingPage.swift */,
 				F36A20731BF6830200C55130 /* CandidateVotingPage.swift */,
 				F36A207B1BF6C34300C55130 /* ThankYouPage.swift */,
+				F36AEE871BFD7BF000038168 /* WelcomePage.swift */,
 			);
 			name = Pages;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 				F3FE82291BF580A800518CDD /* Global.swift */,
 				F3FE822B1BF5851B00518CDD /* MainNavigationController.swift */,
 				F36A20771BF6A15800C55130 /* VotingBooth-Bridging-Header.h */,
+				F36AEE851BFD7B2C00038168 /* PageViewController.swift */,
 			);
 			path = VotingBooth;
 			sourceTree = "<group>";
@@ -127,8 +133,8 @@
 		F3FE82261BF57B3E00518CDD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F3FE82271BF57C9A00518CDD /* PolicyCollectionViewCell.swift */,
 				F36A20751BF699D600C55130 /* CandidateCollectionViewCell.swift */,
+				F36AEE891BFD8DE100038168 /* PolicyTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -266,14 +272,16 @@
 				F36A20761BF699D600C55130 /* CandidateCollectionViewCell.swift in Sources */,
 				F3FE822F1BF5859500518CDD /* DataModel.swift in Sources */,
 				F36A207C1BF6C34300C55130 /* ThankYouPage.swift in Sources */,
+				F36AEE861BFD7B2C00038168 /* PageViewController.swift in Sources */,
 				F3FE822C1BF5851B00518CDD /* MainNavigationController.swift in Sources */,
-				F3FE82281BF57C9A00518CDD /* PolicyCollectionViewCell.swift in Sources */,
 				F3FE82141BF566B000518CDD /* PolicyVotingPage.swift in Sources */,
 				F3FE82121BF566B000518CDD /* AppDelegate.swift in Sources */,
+				F36AEE881BFD7BF000038168 /* WelcomePage.swift in Sources */,
 				F3FE822A1BF580A800518CDD /* Global.swift in Sources */,
 				F3FE821A1BF566B000518CDD /* VotingBooth.xcdatamodeld in Sources */,
 				F36A20721BF669DC00C55130 /* LoadingPage.swift in Sources */,
 				F36A20741BF6830200C55130 /* CandidateVotingPage.swift in Sources */,
+				F36AEE8A1BFD8DE100038168 /* PolicyTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,45 +9,55 @@
 import UIKit
 import SDWebImage
 
-class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class CandidateVotingPage: PageViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    override func viewDidLoad() {
-        
-        self.view.backgroundColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
-    }
+    var nextButton = UIButton()
     
     override func viewWillAppear(animated: Bool) {
         
-        // Title 
-        let title = UILabel()
-        title.text = "Who would you get a beer with?"
-        title.textAlignment = .Center
-        title.font = titleFont?.fontWithSize(35)
-        self.view.addSubview(title)
-        title.snp_makeConstraints { (make) -> Void in
-            make.left.right.equalTo(self.view)
-            make.top.equalTo(self.view).offset(60)
-            make.height.equalTo(40)
+        // Next Button
+        nextButton.setAttributedTitle(NSAttributedString(string: "Finish", attributes: [NSFontAttributeName:titleFont!.fontWithSize(35), NSForegroundColorAttributeName:UIColor.whiteColor()]), forState: .Normal)
+        nextButton.layer.borderWidth = 1
+        nextButton.layer.borderColor = UIColor.whiteColor().CGColor
+        nextButton.backgroundColor = UIColor(white: 200/255, alpha: 1)
+        nextButton.enabled = false
+        nextButton.addTarget(self, action: "finish_tapped", forControlEvents: .TouchUpInside)
+        
+        self.container.addSubview(nextButton)
+        
+        nextButton.snp_makeConstraints { (make) -> Void in
+            make.left.right.bottom.equalTo(self.container)
+            make.height.equalTo(60)
         }
         
-        // Finish button
-        let finishButton = UIButton()
-        finishButton.setAttributedTitle(NSAttributedString(string: "FINISH", attributes: [NSFontAttributeName:titleFont!.fontWithSize(28), NSForegroundColorAttributeName:UIColor.whiteColor()]), forState: .Normal)
-        finishButton.backgroundColor = UIColor.purpleColor()
-        finishButton.addTarget(self, action: "finish_tapped", forControlEvents: .TouchUpInside)
+        // Header
+        let header1 = UILabel()
+        header1.text = "Select a"
+        header1.textColor = textColor
+        header1.font = titleFont?.fontWithSize(55)
+        self.container.addSubview(header1)
+        header1.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(self.container.snp_top).offset(50)
+            make.left.right.equalTo(self.container).inset(125)
+            make.height.equalTo(70)
+        }
         
-        self.view.addSubview(finishButton)
-        
-        finishButton.snp_makeConstraints { (make) -> Void in
-            make.left.right.bottom.equalTo(self.view)
-            make.height.equalTo(60)
+        let header2 = UILabel()
+        header2.text = "Candidate"
+        header2.textColor = textColor
+        header2.font = largeTitleFont?.fontWithSize(60)
+        self.container.addSubview(header2)
+        header2.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(header1.snp_bottom).offset(10)
+            make.centerX.equalTo(self.container.snp_centerX).offset(50)
+            make.height.equalTo(70)
         }
         
         // Collection view
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 192, height: 192)
-        flowLayout.sectionInset = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
-        flowLayout.minimumLineSpacing = 100
+        flowLayout.itemSize = CGSize(width: 170, height: 190)
+        flowLayout.sectionInset = UIEdgeInsets(top: 25, left: 100, bottom: 25, right: 100)
+        flowLayout.minimumLineSpacing = 30
         
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
         collectionView.registerClass(CandidateCollectionViewCell.self, forCellWithReuseIdentifier: "CandidateCell")
@@ -58,9 +68,9 @@ class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UIColle
         self.view.addSubview(collectionView)
         
         collectionView.snp_makeConstraints { (make) -> Void in
-            make.left.right.equalTo(self.view).inset(25)
-            make.top.equalTo(title.snp_bottom).offset(45)
-            make.bottom.equalTo(finishButton.snp_top)
+            make.top.equalTo(header2.snp_bottom).offset(20)
+            make.bottom.equalTo(nextButton.snp_top).offset(-20)
+            make.left.right.equalTo(self.container).inset(20)
         }
     }
     
@@ -75,10 +85,17 @@ class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UIColle
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CandidateCollectionViewCell
         let animation = CABasicAnimation(keyPath: "shadowColor")
         animation.fromValue = cell?.layer.shadowColor
-        animation.toValue = UIColor(red: 70/255, green: 32/255, blue: 102/255, alpha: 1).CGColor
+        if let candidate = data?.candidates[indexPath.row] {
+            switch candidate.party {
+            case .Democratic: animation.toValue = textColor.CGColor
+            case .Republican: animation.toValue = UIColor.redColor().CGColor
+            case _:return
+            }
+        }
+        
         animation.duration = 0.5
         animation.autoreverses = true
         animation.repeatCount = .infinity
@@ -87,45 +104,35 @@ class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UIColle
         
         let shadowWidthAnimation = CABasicAnimation(keyPath: "shadowRadius")
         shadowWidthAnimation.fromValue = cell?.layer.shadowRadius
-        shadowWidthAnimation.toValue = (cell?.layer.shadowRadius)! * 2
+        shadowWidthAnimation.toValue = (cell?.layer.shadowRadius)! * 3
         shadowWidthAnimation.duration = 0.5
         shadowWidthAnimation.autoreverses = true
         shadowWidthAnimation.repeatCount = .infinity
         shadowWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         cell?.layer.addAnimation(shadowWidthAnimation, forKey: "shadowRadius")
         
-        print(indexPath.section*4 + indexPath.row)
-        selectedCandidate = data?.candidates[indexPath.section*4 + indexPath.row]
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return section == 0 ? UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25) : UIEdgeInsets(top: 25, left: 160, bottom: 25, right: 160)
+        print(indexPath.row)
+        selectedCandidate = data?.candidates[indexPath.row]
+        nextButton.backgroundColor = textColor
+        nextButton.enabled = true
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CandidateCell", forIndexPath: indexPath)
-        let candidateCell = cell as? CandidateCollectionViewCell
-        if(candidateCell == nil) {
-            return cell
-        } else if let imageUrl = data?.candidates[indexPath.row].imageUrl {
-            let url = NSURL(string: imageUrl)
-            candidateCell!.imageViewer.sd_setImageWithURL(url)
-            return candidateCell!
+        if let candidateCell = cell as? CandidateCollectionViewCell, candidate = data?.candidates[indexPath.row] {
+            let url = NSURL(string: candidate.imageUrl)
+            candidateCell.imageViewer.sd_setImageWithURL(url)
+            switch candidate.party {
+            case .Democratic: candidateCell.frameView.backgroundColor = UIColor(red: 58/255, green: 82/255, blue: 124/255, alpha: 1)
+            case .Republican: candidateCell.frameView.backgroundColor = UIColor(red: 177/255, green: 68/255, blue: 73/255, alpha: 1)
+            case _: candidateCell.frameView.backgroundColor = UIColor.grayColor()
+            }
         }
         return cell
     }
     
-    var firstRowCap = 4
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return (data?.candidates.count > firstRowCap ? 2 : 1)
-    }
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(section == 0) {
-           return min(firstRowCap, (data?.candidates.count)!)
-        } else {
-           return 3
-        }
+        return data?.candidates.count ?? 0
     }
     
     func finish_tapped() {

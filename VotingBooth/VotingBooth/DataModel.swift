@@ -24,15 +24,27 @@ struct Policy : Deserializable {
     }
 }
 
+enum Party : String {
+    case Democratic = "D"
+    case Republican = "R"
+    case None       = "N"
+}
+
 struct Candidate : Deserializable {
     var id : String = ""
     var name : String = ""
     var imageUrl : String = ""
+    var party : Party
     
     init(data: JSONDictionary) {
         self.id <-- data["_id"]
         self.name <-- data["name"]
         self.imageUrl <-- data["image_url"]
+        if let partyStringValue = data["party"] as? String, party = Party(rawValue: partyStringValue) {
+            self.party = party
+        } else {
+            self.party = Party.None
+        }
     }
 }
 
