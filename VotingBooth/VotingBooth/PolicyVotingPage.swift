@@ -13,15 +13,10 @@ class PolicyVotingPage: PageViewController, UITableViewDataSource, UITableViewDe
     
     let CellIdentifier = "PolicyTableViewCell"
     var nextButton = UIButton()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewWillAppear(animated: Bool) {
       
         // Next Button
-        
         nextButton.setAttributedTitle(NSAttributedString(string: "Next", attributes: [NSFontAttributeName:titleFont!.fontWithSize(35), NSForegroundColorAttributeName:UIColor.whiteColor()]), forState: .Normal)
         nextButton.layer.borderWidth = 1
         nextButton.layer.borderColor = UIColor.whiteColor().CGColor
@@ -79,6 +74,9 @@ class PolicyVotingPage: PageViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath)
         if let policyCell = cell as? PolicyTableViewCell {
             policyCell.label = labels[indexPath.row]
+            if let content = data?.policies[indexPath.row].content {
+                policyCell.content = content
+            }
         }
         return cell
     }
@@ -90,78 +88,11 @@ class PolicyVotingPage: PageViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         nextButton.backgroundColor = textColor
         nextButton.enabled = true
-        print("selected")
-    }
-    
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        print("deselected")
-        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 110
     }
-    
-    //let tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Plain)
-    
-    
-//        let flowLayout = UICollectionViewFlowLayout()
-//        flowLayout.itemSize = CGSize(width: (self.view.bounds.width/2)-80, height: (self.view.bounds.height/2)-150)
-//        flowLayout.sectionInset = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
-//        flowLayout.minimumLineSpacing = 60
-//        
-//        let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
-//        collectionView.registerClass(PolicyCollectionViewCell.self, forCellWithReuseIdentifier: "PolicyCell")
-//        collectionView.dataSource = self
-//        collectionView.delegate = self
-//        
-//        collectionView.backgroundColor = UIColor.clearColor()
-//        self.view.addSubview(collectionView)
-//        
-//        collectionView.snp_makeConstraints { (make) -> Void in
-//            make.left.top.right.equalTo(self.view).inset(25)
-//            make.bottom.equalTo(nextButton.snp_top)
-//        }
-//    }
-    
-//    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PolicyCell", forIndexPath: indexPath)
-//        let policyCell = cell as? PolicyCollectionViewCell
-//        if(policyCell == nil){
-//            return cell
-//        } else {
-//            policyCell?.title.text = data?.policies[indexPath.row].content
-//            return policyCell!
-//        }
-//    }
-//    
-//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        
-//        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-//        let animation = CABasicAnimation(keyPath: "shadowColor")
-//        animation.fromValue = cell?.layer.shadowColor
-//        animation.toValue = UIColor(red: 70/255, green: 32/255, blue: 102/255, alpha: 1).CGColor
-//        animation.duration = 0.5
-//        animation.autoreverses = true
-//        animation.repeatCount = .infinity
-//        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-//        cell?.layer.addAnimation(animation, forKey: "shadowColor")
-//        selectedPolicy = data?.policies[indexPath.row]
-//    }
-//    
-//    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-//        
-//        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-//        cell?.layer.removeAllAnimations()
-//    }
-//    
-//    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return (data?.policies.count)!
-//    }
-//    
-//    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
     
     func next_tapped() {
         self.navigationController?.pushViewController(CandidateVotingPage(), animated: true)

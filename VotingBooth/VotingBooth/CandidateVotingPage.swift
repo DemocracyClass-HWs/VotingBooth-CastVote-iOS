@@ -9,45 +9,55 @@
 import UIKit
 import SDWebImage
 
-class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class CandidateVotingPage: PageViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    override func viewDidLoad() {
-        
-        self.view.backgroundColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1)
-    }
+    var nextButton = UIButton()
     
     override func viewWillAppear(animated: Bool) {
         
-        // Title 
-        let title = UILabel()
-        title.text = "Who would you get a beer with?"
-        title.textAlignment = .Center
-        title.font = titleFont?.fontWithSize(35)
-        self.view.addSubview(title)
-        title.snp_makeConstraints { (make) -> Void in
-            make.left.right.equalTo(self.view)
-            make.top.equalTo(self.view).offset(60)
-            make.height.equalTo(40)
+        // Next Button
+        nextButton.setAttributedTitle(NSAttributedString(string: "Next", attributes: [NSFontAttributeName:titleFont!.fontWithSize(35), NSForegroundColorAttributeName:UIColor.whiteColor()]), forState: .Normal)
+        nextButton.layer.borderWidth = 1
+        nextButton.layer.borderColor = UIColor.whiteColor().CGColor
+        nextButton.backgroundColor = UIColor(white: 200/255, alpha: 1)
+        nextButton.enabled = false
+        nextButton.addTarget(self, action: "next_tapped", forControlEvents: .TouchUpInside)
+        
+        self.container.addSubview(nextButton)
+        
+        nextButton.snp_makeConstraints { (make) -> Void in
+            make.left.right.bottom.equalTo(self.container)
+            make.height.equalTo(60)
         }
         
-        // Finish button
-        let finishButton = UIButton()
-        finishButton.setAttributedTitle(NSAttributedString(string: "FINISH", attributes: [NSFontAttributeName:titleFont!.fontWithSize(28), NSForegroundColorAttributeName:UIColor.whiteColor()]), forState: .Normal)
-        finishButton.backgroundColor = UIColor.purpleColor()
-        finishButton.addTarget(self, action: "finish_tapped", forControlEvents: .TouchUpInside)
+        // Header
+        let header1 = UILabel()
+        header1.text = "Select a"
+        header1.textColor = textColor
+        header1.font = titleFont?.fontWithSize(55)
+        self.container.addSubview(header1)
+        header1.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(self.container.snp_top).offset(50)
+            make.left.right.equalTo(self.container).inset(125)
+            make.height.equalTo(70)
+        }
         
-        self.view.addSubview(finishButton)
-        
-        finishButton.snp_makeConstraints { (make) -> Void in
-            make.left.right.bottom.equalTo(self.view)
-            make.height.equalTo(60)
+        let header2 = UILabel()
+        header2.text = "Candidate"
+        header2.textColor = textColor
+        header2.font = largeTitleFont?.fontWithSize(60)
+        self.container.addSubview(header2)
+        header2.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(header1.snp_bottom).offset(10)
+            make.centerX.equalTo(self.container.snp_centerX).offset(50)
+            make.height.equalTo(70)
         }
         
         // Collection view
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 192, height: 192)
-        flowLayout.sectionInset = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
-        flowLayout.minimumLineSpacing = 100
+        flowLayout.itemSize = CGSize(width: 170, height: 170)
+        flowLayout.sectionInset = UIEdgeInsets(top: 25, left: 100, bottom: 25, right: 100)
+        flowLayout.minimumLineSpacing = 50
         
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
         collectionView.registerClass(CandidateCollectionViewCell.self, forCellWithReuseIdentifier: "CandidateCell")
@@ -58,9 +68,9 @@ class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UIColle
         self.view.addSubview(collectionView)
         
         collectionView.snp_makeConstraints { (make) -> Void in
-            make.left.right.equalTo(self.view).inset(25)
-            make.top.equalTo(title.snp_bottom).offset(45)
-            make.bottom.equalTo(finishButton.snp_top)
+            make.top.equalTo(header2.snp_bottom).offset(20)
+            make.bottom.equalTo(nextButton.snp_top).offset(-20)
+            make.left.right.equalTo(self.container).inset(20)
         }
     }
     
@@ -98,10 +108,6 @@ class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UIColle
         selectedCandidate = data?.candidates[indexPath.section*4 + indexPath.row]
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return section == 0 ? UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25) : UIEdgeInsets(top: 25, left: 160, bottom: 25, right: 160)
-    }
-    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CandidateCell", forIndexPath: indexPath)
         let candidateCell = cell as? CandidateCollectionViewCell
@@ -115,17 +121,8 @@ class CandidateVotingPage: UIViewController, UICollectionViewDataSource, UIColle
         return cell
     }
     
-    var firstRowCap = 4
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return (data?.candidates.count > firstRowCap ? 2 : 1)
-    }
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(section == 0) {
-           return min(firstRowCap, (data?.candidates.count)!)
-        } else {
-           return 3
-        }
+        return data?.candidates.count ?? 0
     }
     
     func finish_tapped() {

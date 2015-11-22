@@ -71,7 +71,7 @@ class PolicyTableViewCell: UITableViewCell {
         
         textView.backgroundColor = UIColor.clearColor()
         textView.userInteractionEnabled = false
-        textView.font = UIFont.systemFontOfSize(16)
+        textView.font = titleFont?.fontWithSize(16)
         textView.text = "Line1\nLine2\nLine3\nLine4"
         container.addSubview(textView)
         textView.snp_makeConstraints { (make) -> Void in
