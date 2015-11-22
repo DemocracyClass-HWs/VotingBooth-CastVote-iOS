@@ -12,6 +12,7 @@ import SnapKit
 class PolicyVotingPage: PageViewController, UITableViewDataSource, UITableViewDelegate {
     
     let CellIdentifier = "PolicyTableViewCell"
+    var nextButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,11 @@ class PolicyVotingPage: PageViewController, UITableViewDataSource, UITableViewDe
       
         // Next Button
         
-        let nextButton = UIButton()
         nextButton.setAttributedTitle(NSAttributedString(string: "Next", attributes: [NSFontAttributeName:titleFont!.fontWithSize(35), NSForegroundColorAttributeName:UIColor.whiteColor()]), forState: .Normal)
         nextButton.layer.borderWidth = 1
         nextButton.layer.borderColor = UIColor.whiteColor().CGColor
-        nextButton.backgroundColor = textColor
+        nextButton.backgroundColor = UIColor(white: 200/255, alpha: 1)
+        nextButton.enabled = false
         nextButton.addTarget(self, action: "next_tapped", forControlEvents: .TouchUpInside)
         
         self.container.addSubview(nextButton)
@@ -72,8 +73,14 @@ class PolicyVotingPage: PageViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    let labels = ["A", "B", "C", "D", "E", "F", "G"]
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath)
+        if let policyCell = cell as? PolicyTableViewCell {
+            policyCell.label = labels[indexPath.row]
+        }
+        return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,7 +88,9 @@ class PolicyVotingPage: PageViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        nextButton.backgroundColor = textColor
+        nextButton.enabled = true
+        print("selected")
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
