@@ -8,6 +8,9 @@
 
 import Foundation
 import SIOSocket
+import Spark_SDK
+
+var photonDevice : SparkDevice?
 
 var socket: SIOSocket?
 

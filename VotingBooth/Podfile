@@ -8,5 +8,6 @@ target 'VotingBooth' do
      pod 'JSONHelper'
      pod 'SIOSocket', '~> 0.2.0'
      pod 'SDWebImage', '~> 3.7.3'
+     pod 'Spark-SDK'
 end
 

@@ -136,6 +136,13 @@ class CandidateVotingPage: PageViewController, UICollectionViewDataSource, UICol
     }
     
     func finish_tapped() {
+        
+        if let device = photonDevice {
+            device.callFunction("press", withArguments: nil, completion: { (statusCode, error) -> Void in
+                
+            })
+        }
+        
         self.navigationController?.pushViewController(ThankYouPage(), animated: true)
     }
 

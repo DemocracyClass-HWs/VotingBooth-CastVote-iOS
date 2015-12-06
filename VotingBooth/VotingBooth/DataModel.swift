@@ -57,3 +57,13 @@ struct DataModel: Deserializable {
         self.candidates <-- data["candidates"]
     }
 }
+
+struct SparkCloudAuthentication : Deserializable {
+    var username = ""
+    var password = ""
+    
+    init(data: JSONDictionary) {
+        self.username <-- data["username"]
+        self.password <-- data["password"]
+    }
+}
