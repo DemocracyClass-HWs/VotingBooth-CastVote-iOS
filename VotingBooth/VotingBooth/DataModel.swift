@@ -17,10 +17,12 @@ class Statistics : NSObject {
 struct Policy : Deserializable {
     var id : String = ""
     var content : String = ""
+    var corrospondingCandidateId : String = ""
     
     init(data: JSONDictionary) {
         self.id <-- data["_id"]
         self.content <-- data["desc"]
+        self.corrospondingCandidateId <-- data["corrospondingCandidateId"]
     }
 }
 
