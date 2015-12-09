@@ -16,6 +16,12 @@ class ThankYouPage: PageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Send the vote
+        if let candidate = selectedCandidate, let policy = selectedPolicy {
+            let voteSubmissionDictionary = ["candidate_id" : candidate.id, "policy_id" : policy.id]
+            socket?.emit("votesubmission", args: [voteSubmissionDictionary])
+        }
+        
         // Picture
         let imageView = UIImageView()
         imageView.image = UIImage(named: "thankyou")

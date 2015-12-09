@@ -53,7 +53,7 @@ class PolicyTableViewCell: UITableViewCell {
         container.layer.cornerRadius = 10
         container.layer.borderColor = container.backgroundColor?.CGColor
         container.layer.borderWidth = 5
-        container.layer.shadowColor =  UIColor.redColor().CGColor//borderColor.CGColor //UIColor.blackColor().CGColor
+        container.layer.shadowColor =  UIColor.redColor().CGColor
         container.layer.shadowOpacity = 0
         container.layer.shadowRadius = 3
         container.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -61,22 +61,22 @@ class PolicyTableViewCell: UITableViewCell {
         container.addSubview(leftLabel)
         leftLabel.text = "A."
         leftLabel.textAlignment = .Center
-        leftLabel.font = largeTitleFont?.fontWithSize(40)
+        leftLabel.font = largeTitleFont?.fontWithSize(30)
         leftLabel.backgroundColor = borderColor
         leftLabel.textColor = UIColor.whiteColor()
         leftLabel.snp_makeConstraints { (make) -> Void in
             make.left.top.bottom.equalTo(container).inset(5)
-            make.width.equalTo(leftLabel.snp_height)
+            make.width.equalTo(leftLabel.snp_height).offset(-50)
         }
         
         textView.backgroundColor = UIColor.clearColor()
         textView.userInteractionEnabled = false
-        textView.font = titleFont?.fontWithSize(16)
+        textView.font = titleFont?.fontWithSize(14)
         textView.text = "Line1\nLine2\nLine3\nLine4"
         container.addSubview(textView)
         textView.snp_makeConstraints { (make) -> Void in
             make.left.equalTo(leftLabel.snp_right).offset(10)
-            make.top.bottom.right.equalTo(container).inset(5)
+            make.top.bottom.right.equalTo(container)
         }
         
         self.addSubview(container)

@@ -35,23 +35,23 @@ class PolicyVotingPage: PageViewController, UITableViewDataSource, UITableViewDe
         let header1 = UILabel()
         header1.text = "Select by"
         header1.textColor = textColor
-        header1.font = titleFont?.fontWithSize(55)
+        header1.font = titleFont?.fontWithSize(28)
         self.container.addSubview(header1)
         header1.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(self.container.snp_top).offset(50)
-            make.left.right.equalTo(self.container).inset(125)
-            make.height.equalTo(70)
+            make.top.equalTo(self.container.snp_top).offset(25)
+            make.left.right.equalTo(self.container).inset(240)
+            make.height.equalTo(30)
         }
         
         let header2 = UILabel()
         header2.text = "Positions"
         header2.textColor = textColor
-        header2.font = largeTitleFont?.fontWithSize(60)
+        header2.font = largeTitleFont?.fontWithSize(35)
         self.container.addSubview(header2)
         header2.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(header1.snp_bottom).offset(10)
             make.centerX.equalTo(self.container.snp_centerX).offset(50)
-            make.height.equalTo(70)
+            make.height.equalTo(30)
         }
         
         // Table view
@@ -93,7 +93,7 @@ class PolicyVotingPage: PageViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 110
+        return 134
     }
     
     func next_tapped() {
