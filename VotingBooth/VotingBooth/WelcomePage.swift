@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 
 class WelcomePage: PageViewController {
+    
+    private let welcomeImageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +39,6 @@ class WelcomePage: PageViewController {
         beginButton.addTarget(self, action: "begin_tapped", forControlEvents: .TouchUpInside)
         
         // image
-        let welcomeImageView = UIImageView()
         welcomeImageView.image = UIImage(named: "welcome")
         welcomeImageView.contentMode = .ScaleAspectFill
         self.view.addSubview(welcomeImageView)
@@ -46,6 +47,10 @@ class WelcomePage: PageViewController {
             make.bottom.equalTo(beginButton).offset(-200)
         }
     
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        print("\(welcomeImageView.bounds)")
     }
     
     func begin_tapped() {
