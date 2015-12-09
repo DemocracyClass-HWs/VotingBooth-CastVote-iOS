@@ -49,10 +49,6 @@ class WelcomePage: PageViewController {
     
     }
     
-    override func viewDidAppear(animated: Bool) {
-        print("\(welcomeImageView.bounds)")
-    }
-    
     func begin_tapped() {
         self.navigationController?.pushViewController(PolicyVotingPage(), animated: true)
     }

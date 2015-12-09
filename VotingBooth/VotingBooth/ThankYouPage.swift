@@ -12,6 +12,7 @@ class ThankYouPage: PageViewController {
     
 
     private var button = UIButton()
+    private var timer : NSTimer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +122,7 @@ class ThankYouPage: PageViewController {
         button.backgroundColor = UIColor(white: 200/255, alpha: 1)
         
         tick()
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick", userInfo: nil, repeats: true)
         
     }
     
@@ -131,6 +132,8 @@ class ThankYouPage: PageViewController {
             self.counter--
             self.button.setAttributedTitle(NSAttributedString(string: "Starting over in \(self.counter) seconds...", attributes: [NSFontAttributeName:titleFont!.fontWithSize(28), NSForegroundColorAttributeName:UIColor.whiteColor()]), forState: .Normal)
             if(self.counter == 0) {
+                self.timer?.invalidate()
+                self.timer = nil
                 self.finish_tapped()
             }
         }

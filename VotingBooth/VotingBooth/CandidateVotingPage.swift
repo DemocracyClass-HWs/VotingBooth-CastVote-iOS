@@ -111,7 +111,6 @@ class CandidateVotingPage: PageViewController, UICollectionViewDataSource, UICol
         shadowWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         cell?.layer.addAnimation(shadowWidthAnimation, forKey: "shadowRadius")
         
-        print(indexPath.row)
         selectedCandidate = data?.candidates[indexPath.row]
         nextButton.backgroundColor = textColor
         nextButton.enabled = true
